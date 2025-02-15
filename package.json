@@ -1,0 +1,16 @@
+{
+  "name": "instamet-project1",
+  "version": "1.0.0",
+  "description": "MET app",
+  "main": "METgetter.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashdrey1110/InstaMET-Project1.git"
+  },
+  "author": "ashley r",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashdrey1110/InstaMET-Project1/issues"
+  },
+  "homepage": "https://github.com/ashdrey1110/InstaMET-Project1#readme"
+}
