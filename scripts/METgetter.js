@@ -11,10 +11,6 @@ Not only does this department contain more information to fulfill the needs of t
 it is also small enough of a collection that it will make the app work faster.
 */
 
-
-
-
-
 // Create a new array of objects, which will hold 10 random pieces
 const arrayOfTenPieces = [];
 
@@ -80,3 +76,5 @@ async function getTenArtworks () {
 }
 
 getTenArtworks();
+
+module.exports = METgetter;
