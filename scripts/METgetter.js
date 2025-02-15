@@ -14,7 +14,7 @@ function artSelector() {
    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects`)
     .then(rawData => {
         if(!rawData.ok){
-            throw new Error(`code: ${rawData.status}, status text: ${rawData.statusText}`);
+            throw new Error(`first fetch code: ${rawData.status}, status text: ${rawData.statusText}`);
         } 
         else {return rawData.json();}
     })
@@ -23,10 +23,11 @@ function artSelector() {
         console.log(`the object id is ${objectID}`);
     })
     // Now, with the objectID, lets get some info on the art piece
-    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`)
+    .then( () => {
+        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`)
             .then(rawArt => {
                 if(!rawArt.ok){
-                    throw new Error(`code: ${rawArt.status}, status text: ${rawArt.statusText}`);
+                    throw new Error(`second fetch code: ${rawArt.status}, status text: ${rawArt.statusText}`);
                 } 
                 else {return rawArt.json();}
             })
@@ -52,9 +53,11 @@ function artSelector() {
                     department: artDepartment,
                     gallery: artGalleryNum
                 })
+
+                console.log(arrayOfTenPieces[0].title);
             })  
-    // print the object
-    console.log(arrayOfTenPieces);
+    })  
+    
 }
 
 artSelector();
