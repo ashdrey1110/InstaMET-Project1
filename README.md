@@ -22,6 +22,8 @@ This project contains the following:
 - `styles`: folder containing the style.css
     - `style.css`: file dictating the style of the app
 
+You can refer to the Kanban board and initial project plan for this app [here](https://www.notion.so/InstaMET-199be99049a980a785fafa65da9eb131?pvs=4) 
+
 ## Some notes on this version
 
 It turns out that the MET API is huge, containing over 490k works, and going through all of that would have considerably slowed down this app. So, in order to fasten things up and smoothly run this app for the purpose of learning and presentation, only the European Paintings department is included. This department of the MET contains over 2,000 pieces and most information is available, such as the artist's name, bio, location, and date the work was made. Unfortunately, while traveling through ancient periods and art, such as in the Egyptian Wing, much of this information is not available.
