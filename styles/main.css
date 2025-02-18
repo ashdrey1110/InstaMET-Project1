@@ -48,7 +48,7 @@ h1 {
 .heart-button {
     font-size: 30px;
     padding: 10px;
-    color: #262626;
+    color: #929292;
     cursor: pointer;
 }
 
@@ -58,7 +58,11 @@ h1 {
 
 .username {
     font-weight: bold;
-    padding: 10px;
+    padding-bottom: 10px;
+}
+
+.liked-by {
+    padding-bottom: 10px;
 }
 
 .caption {
@@ -71,7 +75,7 @@ h1 {
 
 .location-date {
     font-size: smaller;
-    padding-left: 10px;
+    
     padding-bottom: 10px;
 }
 

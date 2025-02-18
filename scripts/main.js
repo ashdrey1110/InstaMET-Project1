@@ -26,7 +26,7 @@ async function loadPosts() {
     <img class="post-photo" src="${post.image}" alt="user's picture">
     <div class="heart-button"><i class="fas fa-heart"></i></div>
     <div class="liked-by">Liked by <strong>${posts[randomLiker].fullName}</strong> and <strong>others</strong></div>
-    <div class="caption"><div class="username">${post.fullName}</div> "${post.title}," (${post.medium}), ${post.bio}. ${randomCaption}</div>
+    <div class="caption"><strong>${post.fullName}</strong> "${post.title}," (${post.medium}), ${post.bio}. ${randomCaption}</div>
     <div class="comments">View comments</div>
     <br>`;
     currentPosts.appendChild(newPost);
