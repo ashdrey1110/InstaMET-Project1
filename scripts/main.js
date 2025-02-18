@@ -5,8 +5,8 @@ import { getTenArtworks } from "./METgetter.js";
 const currentPosts = document.querySelector(".content");
 const loadMoreBtn = document.querySelector("#loadMore");
 
-// create fxn to load 10 posts to html
 
+// create fxn to load 10 posts to html
 async function loadPosts() {
   let posts = await getTenArtworks();
   
@@ -21,25 +21,75 @@ async function loadPosts() {
     newPost.className = 'post';
     newPost.innerHTML = `
     <br>
-    <div class="username">${post.fullName}</div>
-    <div class="location-date">Gallery ${post.gallery} &#x2022; ${post.date}</div>
+    <div class="profile-header">
+      <img class="profile-pic" src="${post.image}">
+      <div class="username">${post.fullName}</div>
+      <div class="location-date">Gallery ${post.gallery} &#x2022; ${post.date}</div>
+    </div>
+    
     <img class="post-photo" src="${post.image}" alt="user's picture">
-    <div class="heart-button"><i class="fas fa-heart"></i></div>
+    <div class="buttons">
+      <button class="heart-button" id="${post.id}"><i class="fas fa-heart"></i></button>
+      <button class="comment-button"><i class="fa-solid fa-comment"></i></button>
+      <button class="wiki-page"><i class="fa-solid fa-circle-info"></i></button>
+    </div>
     <div class="liked-by">Liked by <strong>${posts[randomLiker].fullName}</strong> and <strong>others</strong></div>
     <div class="caption"><strong>${post.fullName}</strong> "${post.title}," (${post.medium}), ${post.bio}. ${randomCaption}</div>
-    <div class="comments">View comments</div>
+    <div class="comments" id="comment-${post.id}">
+      <div class="comment-header">View comments</div>
+    </div>
     <br>`;
     currentPosts.appendChild(newPost);
   }
 }
 
+
+
 document.addEventListener("DOMContentLoaded", async () => {
   await loadPosts();
-})
+
+  document.querySelectorAll(".heart-button").forEach(likeButton => {
+    likeButton.addEventListener("click", () => {
+      likeButton.classList.toggle("liked");
+    });
+  });
+
+  document.querySelectorAll(".comment-button").forEach(commentButton => {
+    commentButton.addEventListener("click", () => {
+      let newComment = document.createElement('div');
+      newComment.className = 'comment';
+      newComment.innerHTML = `
+        <strong>currentuser</strong> this is dope
+      `;
+      let post = commentButton.closest(".post");
+      let comments = post.querySelector(".comments");
+      comments.appendChild(newComment);
+    })
+  })
+});
 
 loadMoreBtn.addEventListener("click", async (event) => {
   await loadPosts();
-})
+
+  document.querySelectorAll(".heart-button").forEach(button => {
+    button.addEventListener("click", () => {
+      button.classList.toggle("liked");
+    });
+  });
+
+  document.querySelectorAll(".comment-button").forEach(commentButton => {
+    commentButton.addEventListener("click", () => {
+      let newComment = document.createElement('div');
+      newComment.className = 'comment';
+      newComment.innerHTML = `
+        <strong>currentuser</strong> this is dope
+      `;
+      let post = commentButton.closest(".post");
+      let comments = post.querySelector(".comments");
+      comments.appendChild(newComment);
+    })
+  })
+});
 
 function captionGenerator(){
   let options = [

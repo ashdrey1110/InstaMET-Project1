@@ -4,7 +4,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    background-color: #ffffff;
 }
 
 .header {
@@ -37,6 +37,32 @@ h1 {
     color: rgb(34, 34, 34);
 }
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    padding: 10px 0;
+}
+
+.username {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.location-date {
+    margin-left: auto;
+    font-size: smaller;
+    color: #929292;
+}
+
 .post-photo {
     width: 100%;
     height: auto;
@@ -45,21 +71,26 @@ h1 {
     border: 1px solid #dbdbdb;
 }
 
-.heart-button {
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.heart-button, .comment-button, .wiki-page {
     font-size: 30px;
-    padding: 10px;
+    width: auto;
+    border: none;
     color: #929292;
+    background-color: #ffffff;
     cursor: pointer;
 }
 
-.heart-button:hover {
+.heart-button.liked {
     color: rgb(249, 59, 116);
 }
 
-.username {
-    font-weight: bold;
-    padding-bottom: 10px;
-}
 
 .liked-by {
     padding-bottom: 10px;
@@ -69,16 +100,20 @@ h1 {
     padding-bottom: 10px;
 }
 
-.comments {
+.comment-header {
     color: grey;
 }
 
-.location-date {
-    font-size: smaller;
+
+#loadMore {
+    font-size: larger;
+    border: none;
     
-    padding-bottom: 10px;
+    color: rgb(172, 172, 172);
+    background-color: #ffffff;
 }
 
-.date {
-    font-size: smaller;
+#loadMore:hover {
+    color: rgb(57, 57, 57);
+    background-color: #ffffff;
 }
