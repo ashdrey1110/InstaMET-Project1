@@ -15,7 +15,11 @@ async function loadPosts() {
     let newPost = document.createElement('div');
     newPost.className = 'post';
     newPost.innerHTML = `
-    <p>${post.title} is by ${post.fullName}</p>`;
+    <div class="username">${post.fullName}</div>
+    <img src="${post.image}" alt="user's picture">
+    <div class="liked-by">Liked by ${posts[6].fullName} and others</div>
+    <div class="caption">${post.fullName} "${post.title}," ${post.medium}, ${post.bio}.</div>
+    <div class="comments">View comments</div>`;
     currentPosts.appendChild(newPost);
   }
 }
