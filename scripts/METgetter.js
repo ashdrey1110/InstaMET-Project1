@@ -44,12 +44,12 @@ async function artSelector() {
             fullName: jsonifiedArt.artistDisplayName || "anon",
             image: jsonifiedArt.primaryImageSmall,
             bio: jsonifiedArt.artistDisplayBio,
-            date: jsonifiedArt.objectDate,
+            date: jsonifiedArt.objectDate || "Date unknown",
             medium: jsonifiedArt.medium,
             wiki: jsonifiedArt.objectWikidata_URL || "Sorry, no wiki page is available",
             department: jsonifiedArt.department,
             id: jsonifiedArt.objectID,
-            gallery: jsonifiedArt.GalleryNumber || "N/a"
+            gallery: jsonifiedArt.GalleryNumber || "N/A"
         };
         
         return artObject;

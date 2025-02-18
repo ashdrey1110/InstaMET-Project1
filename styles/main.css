@@ -30,6 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
+    
 }
 
 h1 {
@@ -39,8 +40,9 @@ h1 {
 .post-photo {
     width: 100%;
     height: auto;
-    border-radius: 2%;
+    border-radius: 1%;
     object-fit: cover;
+    border: 1px solid #dbdbdb;
 }
 
 .heart-button {
@@ -59,12 +61,18 @@ h1 {
     padding: 10px;
 }
 
+.caption {
+    padding-bottom: 10px;
+}
+
 .comments {
     color: grey;
 }
 
-.location {
+.location-date {
     font-size: smaller;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 .date {

@@ -22,7 +22,7 @@ async function loadPosts() {
     newPost.innerHTML = `
     <br>
     <div class="username">${post.fullName}</div>
-    <div class="location-date">Gallery ${post.gallery} ${post.date}</div>
+    <div class="location-date">Gallery ${post.gallery} &#x2022; ${post.date}</div>
     <img class="post-photo" src="${post.image}" alt="user's picture">
     <div class="heart-button"><i class="fas fa-heart"></i></div>
     <div class="liked-by">Liked by <strong>${posts[randomLiker].fullName}</strong> and <strong>others</strong></div>
