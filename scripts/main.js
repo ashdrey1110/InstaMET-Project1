@@ -1,8 +1,9 @@
 // Retrieve MET info
-const { getTenArtworks } = require("./METgetter");
+import { getTenArtworks } from "./METgetter.js";
 
-// create variable for post area
-const currentPosts = document.querySelector('.content');
+// create variables for elements
+const currentPosts = document.querySelector(".content");
+const loadMoreBtn = document.querySelector("#loadMore");
 
 // create fxn to load 10 posts to html
 
@@ -20,5 +21,9 @@ async function loadPosts() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await loadPosts();
+})
+
+loadMoreBtn.addEventListener("click", async (event) => {
   await loadPosts();
 })
