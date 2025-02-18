@@ -2,7 +2,7 @@
   "name": "instamet-project1",
   "version": "1.0.0",
   "description": "MET app",
-  "main": "METgetter.js",
+  "main": "main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ashdrey1110/InstaMET-Project1.git"

@@ -64,7 +64,7 @@ async function artSelector() {
 
 
 // getTenArtworks fxn actually creates the list of 10
-async function getTenArtworks () {
+export async function getTenArtworks () {
     while(arrayOfTenPieces.length<10){
         let artwork = await artSelector();
         //if there's an artwork AND it has an image
@@ -72,9 +72,7 @@ async function getTenArtworks () {
             arrayOfTenPieces.push(artwork);
         }
     }
-    console.log(`the length is ${arrayOfTenPieces.length} and the artwork at index 3 is titled ${arrayOfTenPieces[3].title} with objectID of ${arrayOfTenPieces[3].id}`);
+    return arrayOfTenPieces;
 }
 
-getTenArtworks();
 
-module.exports = METgetter;
