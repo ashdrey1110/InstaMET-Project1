@@ -30,7 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
-    
+    border-bottom: 2px solid #c7c7c7;
 }
 
 h1 {
@@ -102,6 +102,20 @@ h1 {
 
 .comment-header {
     color: grey;
+    font-size: medium;
+    border: none;
+    background-color: #ffffff;
+    padding-bottom: 10px;
+}
+
+.comment.hidden {
+    display: none;
+}
+
+.comment {
+    display: block;
+    padding-left: 7px;
+    padding-bottom: 5px;
 }
 
 

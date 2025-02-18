@@ -14,7 +14,9 @@ async function loadPosts() {
   //load content for each post
   for(let post of posts){
     let randomLiker = Math.floor(Math.random()*posts.length);
+    let randomCommenter = Math.floor(Math.random()*posts.length);
     let randomCaption = captionGenerator();
+    let randomComment = randomCommentGenerator();
 
 
     let newPost = document.createElement('div');
@@ -31,12 +33,14 @@ async function loadPosts() {
     <div class="buttons">
       <button class="heart-button" id="${post.id}"><i class="fas fa-heart"></i></button>
       <button class="comment-button"><i class="fa-solid fa-comment"></i></button>
-      <button class="wiki-page"><i class="fa-solid fa-circle-info"></i></button>
+      <a href="${post.wiki}"><button class="wiki-page"><i class="fa-solid fa-circle-info"></i></button></a>
     </div>
     <div class="liked-by">Liked by <strong>${posts[randomLiker].fullName}</strong> and <strong>others</strong></div>
     <div class="caption"><strong>${post.fullName}</strong> "${post.title}," (${post.medium}), ${post.bio}. ${randomCaption}</div>
-    <div class="comments" id="comment-${post.id}">
-      <div class="comment-header">View comments</div>
+    <div class="comments">
+      <button class="comment-header">View comments</button>
+      <div class="comment hidden"><strong>${posts[randomCommenter].fullName}</strong> ${randomComment} </div>
+      <div class="comment hidden"><strong>art_troll_21</strong> mid </div>
     </div>
     <br>`;
     currentPosts.appendChild(newPost);
@@ -44,52 +48,69 @@ async function loadPosts() {
 }
 
 
+// Event Listeners
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadPosts();
+  like();
+  commenting();
+  openComments();
+});
 
+
+loadMoreBtn.addEventListener("click", async (event) => {
+  await loadPosts();
+  like();
+  commenting();
+  openComments();
+});
+
+
+
+
+
+// Functions for liking, commenting, opening wiki
+
+function like() {
   document.querySelectorAll(".heart-button").forEach(likeButton => {
     likeButton.addEventListener("click", () => {
       likeButton.classList.toggle("liked");
     });
   });
+}
 
+
+
+function commenting() {
   document.querySelectorAll(".comment-button").forEach(commentButton => {
     commentButton.addEventListener("click", () => {
       let newComment = document.createElement('div');
       newComment.className = 'comment';
       newComment.innerHTML = `
-        <strong>currentuser</strong> this is dope
+        <strong>currentuser</strong> <input type="text">
       `;
       let post = commentButton.closest(".post");
       let comments = post.querySelector(".comments");
       comments.appendChild(newComment);
     })
   })
-});
+}
 
-loadMoreBtn.addEventListener("click", async (event) => {
-  await loadPosts();
 
-  document.querySelectorAll(".heart-button").forEach(button => {
-    button.addEventListener("click", () => {
-      button.classList.toggle("liked");
-    });
-  });
 
-  document.querySelectorAll(".comment-button").forEach(commentButton => {
-    commentButton.addEventListener("click", () => {
-      let newComment = document.createElement('div');
-      newComment.className = 'comment';
-      newComment.innerHTML = `
-        <strong>currentuser</strong> this is dope
-      `;
-      let post = commentButton.closest(".post");
-      let comments = post.querySelector(".comments");
-      comments.appendChild(newComment);
+function openComments(){
+  document.querySelectorAll(".comment-header").forEach(commentHeader => {
+    commentHeader.addEventListener("click", () => {
+      //unhide comments
+      let comments = commentHeader.closest(".post").querySelectorAll(".comment");
+      comments.forEach(comment => comment.classList.toggle("hidden"));
     })
   })
-});
+}
+
+
+
+
 
 function captionGenerator(){
   let options = [
@@ -114,4 +135,24 @@ function captionGenerator(){
     '#blessed'
     ];
     return options[Math.floor(Math.random()*options.length)];
+}
+
+function randomCommentGenerator(){
+  let option = [
+    'Beautiful!',
+    'omg i loooove this',
+    'im literally obsessed',
+    'this is soooo good',
+    'Wow, cool post! Check out the link in my bio!',
+    'Check your DMs...',
+    'yassss queen!!!! you SLAYED this',
+    'this is so mother',
+    'big ups bro',
+    'bruh this is crazy',
+    'Is this AI?',
+    'wow no tag?',
+    'this is so MET core',
+    'slay'
+  ];
+  return option[Math.floor(Math.random()*option.length)];
 }
