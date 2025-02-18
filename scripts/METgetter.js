@@ -49,7 +49,7 @@ async function artSelector() {
             wiki: jsonifiedArt.objectWikidata_URL || "Sorry, no wiki page is available",
             department: jsonifiedArt.department,
             id: jsonifiedArt.objectID,
-            gallery: jsonifiedArt.GalleryNumber
+            gallery: jsonifiedArt.GalleryNumber || "N/a"
         };
         
         return artObject;
@@ -65,6 +65,7 @@ async function artSelector() {
 
 // getTenArtworks fxn actually creates the list of 10
 export async function getTenArtworks () {
+    arrayOfTenPieces.length=0;
     while(arrayOfTenPieces.length<10){
         let artwork = await artSelector();
         //if there's an artwork AND it has an image
