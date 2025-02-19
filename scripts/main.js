@@ -121,13 +121,20 @@ function submitComment(){
 
       if(commentInput && commentInput.value.trim() !==""){
         let uploadedComment = document.createElement('div');
-        uploadedComment.className = "comment hidden";
+        if(post.querySelector(".comment").classList.contains("hidden")){
+          uploadedComment.className = "comment hidden";
+        }
+        else{
+          uploadedComment.className = "comment";
+        }
+        
         uploadedComment.innerHTML = `
         <strong>currentuser</strong> ${commentInput.value.trim()}
         `;
         let comments = post.querySelector(".comments");
         comments.appendChild(uploadedComment);
         commentInput.value = "";
+        commentInput.closest(".comment").remove();
       }
     }
   })
