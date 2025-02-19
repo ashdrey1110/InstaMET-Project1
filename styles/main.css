@@ -118,6 +118,20 @@ h1 {
     padding-bottom: 5px;
 }
 
+.new-comment {
+    font-size: 1em;
+    width: 75%;
+}
+
+.submit-comment {
+    font-size: 15px;
+    width: auto;
+    border: none;
+    color: #929292;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
 
 #loadMore {
     font-size: larger;

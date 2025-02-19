@@ -17,6 +17,7 @@ async function loadPosts() {
     let randomCommenter = Math.floor(Math.random()*posts.length);
     let randomCaption = captionGenerator();
     let randomComment = randomCommentGenerator();
+    let randomTroll = randomTrollGenerator();
 
 
     let newPost = document.createElement('div');
@@ -40,7 +41,7 @@ async function loadPosts() {
     <div class="comments">
       <button class="comment-header">View comments</button>
       <div class="comment hidden"><strong>${posts[randomCommenter].fullName}</strong> ${randomComment} </div>
-      <div class="comment hidden"><strong>art_troll_21</strong> mid </div>
+      <div class="comment hidden"><strong>art_troll_21</strong> ${randomTroll} </div>
     </div>
     <br>`;
     currentPosts.appendChild(newPost);
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   like();
   commenting();
   openComments();
+  submitComment();
 });
 
 
@@ -63,6 +65,7 @@ loadMoreBtn.addEventListener("click", async (event) => {
   like();
   commenting();
   openComments();
+  submitComment();
 });
 
 
@@ -87,12 +90,33 @@ function commenting() {
       let newComment = document.createElement('div');
       newComment.className = 'comment';
       newComment.innerHTML = `
-        <strong>currentuser</strong> <input type="text">
+        <strong>currentuser</strong> <input type="text" class="new-comment"> <button class="submit-comment"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
       `;
       let post = commentButton.closest(".post");
       let comments = post.querySelector(".comments");
       comments.appendChild(newComment);
     })
+  })
+}
+
+
+function submitComment(){
+  document.addEventListener("click", (event) => {
+    if(event.target.classList.contains("submit-comment")){
+      let post = event.target.closest(".post");
+      let commentInput = post.querySelector(".new-comment");
+
+      if(commentInput && commentInput.value.trim() !==""){
+        let uploadedComment = document.createElement('div');
+        uploadedComment.className = "comment hidden";
+        uploadedComment.innerHTML = `
+        <strong>currentuser</strong> ${commentInput.value.trim()}
+        `;
+        let comments = post.querySelector(".comments");
+        comments.appendChild(uploadedComment);
+        commentInput.value = "";
+      }
+    }
   })
 }
 
@@ -107,6 +131,8 @@ function openComments(){
     })
   })
 }
+
+
 
 
 
@@ -154,5 +180,19 @@ function randomCommentGenerator(){
     'this is so MET core',
     'slay'
   ];
+  return option[Math.floor(Math.random()*option.length)];
+}
+
+function randomTrollGenerator() {
+  let option = [
+    'mid',
+    'ugly',
+    'L',
+    'my 5 year old could do this',
+    'yikes...',
+    'no talent',
+    'dumb',
+    'And they put this in a museum? ...yikes'
+  ]
   return option[Math.floor(Math.random()*option.length)];
 }
