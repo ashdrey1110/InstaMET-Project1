@@ -98,14 +98,16 @@ function like() {
 function commenting() {
   document.querySelectorAll(".comment-button").forEach(commentButton => {
     commentButton.addEventListener("click", () => {
-      let newComment = document.createElement('div');
-      newComment.className = 'comment';
-      newComment.innerHTML = `
+      if(!commentButton.closest(".post").querySelector(".new-comment")){
+        let newComment = document.createElement('div');
+        newComment.className = 'comment';
+        newComment.innerHTML = `
         <strong>currentuser</strong> <input type="text" class="new-comment"> <button class="submit-comment"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-      `;
-      let post = commentButton.closest(".post");
-      let comments = post.querySelector(".comments");
-      comments.appendChild(newComment);
+        `;
+        let post = commentButton.closest(".post");
+        let comments = post.querySelector(".comments");
+        comments.appendChild(newComment);
+      }
     })
   })
 }
