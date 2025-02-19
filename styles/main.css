@@ -129,16 +129,18 @@ h1 {
 
 .new-comment {
     font-size: 1em;
-    width: 75%;
+    width: 70%;
 }
 
 .submit-comment {
     font-size: 20px;
-    width: auto;
+    width: 30px;
+    height: 30px;
     border: none;
     color: #929292;
     background-color: #ffffff;
     cursor: pointer;
+    padding: 5px;
 }
 
 
