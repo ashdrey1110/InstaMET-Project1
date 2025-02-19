@@ -53,6 +53,8 @@ async function loadPosts() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadPosts();
+  document.querySelector(".loading").classList.toggle("hidden");
+  document.querySelector("#loadMore").classList.toggle("hide-load");
   like();
   commenting();
   openComments();
@@ -61,7 +63,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 loadMoreBtn.addEventListener("click", async (event) => {
+  document.querySelector("#loadMore").classList.toggle("hide-load");
+  // show loader
+  let loading = document.createElement('img');
+  loading.class = "loading";
+  loading.src = "/images/IMG_9337.GIF";
+  loading.style.width = '20%';
+  document.querySelector(".content").appendChild(loading);
   await loadPosts();
+  document.querySelector("#loadMore").classList.toggle("hide-load");
+  document.querySelector(".content").removeChild(loading);
   like();
   commenting();
   openComments();

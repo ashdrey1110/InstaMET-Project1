@@ -20,6 +20,11 @@ body {
 }
   
 
+
+.loading.hidden {
+    display: none;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -143,6 +148,14 @@ h1 {
     
     color: rgb(172, 172, 172);
     background-color: #ffffff;
+}
+
+.hide-load {
+    display: none;
+}
+
+.loading {
+    width: 20%;
 }
 
 #loadMore:hover {
